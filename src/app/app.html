@@ -6,14 +6,14 @@
     loop 
     playsinline 
     class="position-absolute top-50 start-50 translate-middle video-bg"
-    style="width: 102% !important; height: 102% !important; object-fit: fill !important; min-width: 102% !important; min-height: 102% !important;">
+    style="width: calc(100% + 4px) !important; height: 100% !important; object-fit: cover !important; min-width: calc(100% + 4px) !important; min-height: 100% !important; max-width: none !important;">
     <source src="bg-waves.mp4" type="video/mp4">
   </video>
 
   <div class="card p-4 rounded-4 shadow border-0 position-relative glass-card" style="width: 25rem; height: 30rem; z-index: 10;">
     <div class="d-flex justify-content-center align-items-center text-white">
       <i class="bi bi-wallet2 fs-2 mb-1 me-3 text-white"></i>
-      <h1 class="text-center mt-2 d-inline-block text-white" style="font-family: 'Optima'; letter-spacing: 0.1rem;">{{ title() }}</h1>
+      <h1 class="text-center mt-2 d-inline-block text-white" style="font-family: 'Optima'; letter-spacing: 0.1rem; cursor: default; user-select: none">{{ title() }}</h1>
     </div>
     
     <app-transaction-list [items]="transactions"></app-transaction-list>
