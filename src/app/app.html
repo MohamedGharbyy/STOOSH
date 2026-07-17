@@ -1,11 +1,21 @@
-<div class="d-flex align-items-center justify-content-center vh-100">
-  <div class="d-inline-block card p-4 rounded-4 shadow" style="width: 25rem; height: 30rem;">
-    
-    <div class="d-flex justify-content-center align-items-center mb-3">
-      <i class="bi bi-wallet2 fs-2 mb-1 me-3"></i>
-      <h1 class="text-center mt-2 d-inline-block" style="font-family: 'Optima'; letter-spacing: 0.1rem;">{{ title() }}</h1>
+<div class="position-relative d-flex align-items-center justify-content-center min-vh-100 py-4 overflow-hidden">
+  
+  <video 
+    autoplay 
+    muted 
+    loop 
+    playsinline 
+    class="position-absolute top-50 start-50 translate-middle w-100 h-100 object-fit-cover video-bg">
+    <source src="/bg-waves.mp4" type="video/mp4">
+  </video>
+
+  <div class="card p-4 rounded-4 shadow border-0 position-relative glass-card" style="width: 25rem; height: 30rem; z-index: 10;">
+    <div class="d-flex justify-content-center align-items-center text-white">
+      <i class="bi bi-wallet2 fs-2 mb-1 me-3 text-white"></i>
+      <h1 class="text-center mt-2 d-inline-block text-white" style="font-family: 'Optima'; letter-spacing: 0.1rem;">{{ title() }}</h1>
     </div>
     
     <app-transaction-list [items]="transactions"></app-transaction-list>
   </div>
+
 </div>

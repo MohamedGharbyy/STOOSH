@@ -1,4 +1,3 @@
-/* Custom scrollbar path for a cleaner minimalist feel */
 .transaction-container::-webkit-scrollbar {
   width: 4px;
 }
@@ -8,15 +7,47 @@
 }
 
 .transaction-container::-webkit-scrollbar-thumb {
-  background-color: #dee2e6;
+  background-color: rgba(255, 255, 255, 0.2);
   border-radius: 10px;
 }
 
+.transaction-container div.transition-hover {
+  background: rgba(255, 255, 255, 0.04) !important;
+  border: 1px solid rgba(255, 255, 255, 0.06) !important;
+}
+
+.transaction-container div.transition-hover div {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
 .transition-hover {
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
 }
 
 .transition-hover:hover {
   transform: translateY(-1px);
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  background: rgba(255, 255, 255, 0.08) !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+.transaction-container p {
+  color: #f8f9fa !important;
+}
+
+.transaction-container small {
+  color: #a8b2bd !important;
+}
+
+.transaction-container {
+  padding: 4px 0 !important; 
+}
+
+.transaction-container::-webkit-scrollbar {
+  width: 4px;
+}
+
+.text-dark {
+  color: #f8f9fa !important;
 }
