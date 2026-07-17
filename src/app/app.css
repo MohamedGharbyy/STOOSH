@@ -5,16 +5,16 @@
   transform: translate(-50%, -50%) !important;
   width: 100vw !important;
   height: 100vh !important;
-  min-width: 101vw !important;
-  min-height: 101vh !important;
+  min-width: 100vw !important;
+  min-height: 100vh !important;
   object-fit: cover !important;
   z-index: 1;
   pointer-events: none;
 }
 
 .glass-card {
-  background: rgba(15, 22, 28, 0.45) !important;
-  backdrop-filter: blur(16px) !important;
-  -webkit-backdrop-filter: blur(16px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  background: rgba(15, 22, 28, 0.65) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
 }
