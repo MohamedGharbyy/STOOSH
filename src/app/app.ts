@@ -1,12 +1,27 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { TransactionList } from './components/transaction-list/transaction-list';
+import { Transaction } from './transaction.model';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [TransactionList],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
 export class App {
   protected readonly title = signal('STOOSH');
+  public transactions: Transaction[] = [{
+    id: 1,
+    name: 'Salary',
+    amount: 2500,
+    type: 'income',
+    date: new Date('2026-06-29')
+  },
+  {
+    id: 2,
+    name: 'Electricity Bill',
+    amount: 80,
+    type: 'expense',
+    date: new Date('2026-07-17')
+  }];
 }
