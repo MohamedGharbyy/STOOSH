@@ -1,14 +1,17 @@
-import { Component, signal } from '@angular/core';
-import { TransactionList } from './components/transaction-list/transaction-list';
+import { Component, signal, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
+import { Auth } from './components/auth/auth';
+import { Dashboard } from './components/dashboard/dashboard';
 import { Transaction } from './transaction.model';
 
 @Component({
   selector: 'app-root',
-  imports: [TransactionList],
+  imports: [Auth, Dashboard],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
-export class App {
+export class App implements AfterViewInit {
+  @ViewChild('bgVideo') bgVideo!: ElementRef<HTMLVideoElement>;
+
   protected readonly title = signal('STOOSH');
   public transactions: Transaction[] = [{
     id: 1,
@@ -25,13 +28,15 @@ export class App {
     date: new Date('2026-07-17')
   }];
   isLoggedIn = false;
-  authMode: 'login' | 'signup' | 'forgot' = 'login';
 
-  handleAuthSubmit() {
+  onLoginSuccess() {
     this.isLoggedIn = true;
   }
 
-  switchAuthMode(mode: 'login' | 'signup' | 'forgot') {
-    this.authMode = mode;
+  ngAfterViewInit() {
+    const video = this.bgVideo?.nativeElement;
+    if (video) {
+      video.play().catch(() => {});
+    }
   }
 }

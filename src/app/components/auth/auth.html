@@ -1,0 +1,83 @@
+<div class="card p-4 p-sm-5 rounded-4 shadow border-0 glass-card w-100 d-flex flex-column align-items-center">
+  
+  <div class="d-flex flex-column align-items-center text-white mb-4">
+    <i class="bi bi-wallet2 text-white mb-2" style="font-size: 2.5rem;"></i>
+    <h1 class="text-center text-white m-0" style="font-family: 'Optima'; letter-spacing: 0.2rem; user-select: none;">STOOSH</h1>
+    <p class="text-white-50 small text-center mt-1">Personal Wealth Tracker</p>
+  </div>
+
+  <h4 class="text-white mb-4 fw-medium tracking-wide w-100 text-start">
+    @if (authMode === 'login') { Sign In }
+    @else if (authMode === 'signup') { Create Account }
+    @else { Reset Password }
+  </h4>
+
+  <form (ngSubmit)="handleAuthSubmit()" class="w-100 d-flex flex-column gap-3">
+    
+    @if (authMode === 'forgot') {
+      <p class="text-white-50 small mb-2">
+        Enter the email address associated with your account and we'll send you instructions to safely reset your credentials.
+      </p>
+      
+      <div class="form-group">
+        <label class="text-white-50 small mb-1">Email Address</label>
+        <input type="email" class="form-control glass-input text-white" placeholder="name@example.com" required>
+      </div>
+
+      <button type="submit" class="btn w-100 text-white fw-medium mt-3 py-2_5 action-btn glass-btn-primary">
+        Send Recovery Email
+      </button>
+
+      <div class="text-center mt-3">
+        <a href="#" (click)="switchAuthMode('login'); $event.preventDefault();" class="text-white-50 small fw-semibold link-hover text-decoration-none">
+          <i class="bi bi-arrow-left me-1"></i> Back to Sign In
+        </a>
+      </div>
+
+    } @else {
+      @if (authMode === 'signup') {
+        <div class="form-group">
+          <label class="text-white-50 small mb-1">Full Name</label>
+          <input type="text" class="form-control glass-input text-white" placeholder="John Doe" required>
+        </div>
+      }
+
+      <div class="form-group">
+        <label class="text-white-50 small mb-1">Email Address</label>
+        <input type="email" class="form-control glass-input text-white" placeholder="name@example.com" required>
+      </div>
+
+      <div class="form-group">
+        <div class="d-flex justify-content-between align-items-center mb-1">
+          <label class="text-white-50 small m-0">Password</label>
+          @if (authMode === 'login') {
+            <a href="#" (click)="switchAuthMode('forgot'); $event.preventDefault();" class="text-white-50 extreme-small link-hover text-decoration-none fw-medium">
+              Forgot Password?
+            </a>
+          }
+        </div>
+        <input type="password" class="form-control glass-input text-white" placeholder="••••••••" required>
+      </div>
+
+      <button type="submit" class="btn w-100 text-white fw-medium mt-3 py-2_5 action-btn glass-btn-primary">
+        {{ authMode === 'login' ? 'Log In' : 'Register' }}
+      </button>
+
+      <div class="text-center mt-3">
+        @if (authMode === 'login') {
+          <p class="text-white-50 small m-0">
+            Don't have an account? 
+            <a href="#" (click)="switchAuthMode('signup'); $event.preventDefault();" class="text-white fw-semibold link-hover ms-1 text-decoration-none">Sign Up</a>
+          </p>
+        } @else {
+          <p class="text-white-50 small m-0">
+            Already have an account? 
+            <a href="#" (click)="switchAuthMode('login'); $event.preventDefault();" class="text-white fw-semibold link-hover ms-1 text-decoration-none">Sign In</a>
+          </p>
+        }
+      </div>
+    }
+
+  </form>
+
+</div>
