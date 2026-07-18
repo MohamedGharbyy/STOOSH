@@ -1,11 +1,9 @@
 <div class="card p-3 rounded-4 shadow border-0 glass-card w-100" style="min-height: 75vh; display: flex; flex-direction: column;">
   
-  <!-- 1. HEADER (Perfectly centered) -->
   <div class="d-flex align-items-center justify-content-center py-3 mb-2">
     <h1 class="text-white m-0" style="font-family: 'Optima'; letter-spacing: 0.75rem; font-size: 1.8rem; font-weight: 500;">STOO$H</h1>
   </div>
 
-  <!-- 2. NAVBAR (The anchor for alignment) -->
   <nav class="navbar navbar-expand w-100 p-0 mb-3 border-top border-bottom border-white-10">
     <ul class="navbar-nav d-flex justify-content-between w-100 text-center flex-row">
       <li class="nav-item flex-fill"><a class="nav-link text-white fw-bold py-2" href="#">Main</a></li>
@@ -14,12 +12,10 @@
     </ul>
   </nav>
 
-  <!-- 3. LIST -->
   <div class="flex-grow-1 overflow-y-auto px-1">
     <app-transaction-list [items]="transactions"></app-transaction-list>
   </div>
 
-  <!-- 4. ACTIONS -->
   <div class="d-flex gap-2 w-100 pt-3 border-top border-white-10">
     <button class="btn flex-fill py-2 text-white fw-medium glass-btn-primary">Add</button>
     <button class="btn flex-fill py-2 text-white fw-medium glass-btn-secondary">Edit</button>
