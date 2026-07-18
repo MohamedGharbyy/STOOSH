@@ -1,35 +1,27 @@
-<nav class="navbar navbar-expand rounded-4 p-2 mb-3 glass-card w-100">
-  <div class="container-fluid px-1 px-sm-2">
-    <ul class="navbar-nav d-flex justify-content-between w-100 text-center flex-row">
-      <li class="nav-item flex-fill mx-1">
-        <a class="nav-link text-white fw-medium active-tab responsive-nav-link" href="#">Main</a>
-      </li>
-      <li class="nav-item flex-fill mx-1">
-        <a class="nav-link text-white-50 fw-medium link-hover responsive-nav-link" href="#">Monthly Review</a>
-      </li>
-      <li class="nav-item flex-fill mx-1">
-        <a class="nav-link text-white-50 fw-medium link-hover responsive-nav-link" href="#">Settings</a>
-      </li>
-    </ul>
-  </div>
-</nav>
-
-<div class="card p-3 p-sm-4 rounded-4 shadow border-0 glass-card w-100" style="min-height: 75vh; max-height: 85vh; display: flex; flex-direction: column;">
-  <div class="d-flex justify-content-center align-items-center text-white mb-2">
-    <i class="bi bi-wallet2 responsive-icon mb-1 me-2 me-sm-3 text-white"></i>
-    <h1 class="text-center mt-2 mb-3 d-inline-block text-white responsive-title" style="font-family: 'Optima'; letter-spacing: 0.1rem; user-select: none;">{{ title }}</h1>
-  </div>
+<div class="card p-3 rounded-4 shadow border-0 glass-card w-100" style="min-height: 75vh; display: flex; flex-direction: column;">
   
-  <div class="flex-grow-1 overflow-y-auto px-1 mb-3">
+  <!-- 1. HEADER (Perfectly centered) -->
+  <div class="d-flex align-items-center justify-content-center py-3 mb-2">
+    <h1 class="text-white m-0" style="font-family: 'Optima'; letter-spacing: 0.75rem; font-size: 1.8rem; font-weight: 500;">STOO$H</h1>
+  </div>
+
+  <!-- 2. NAVBAR (The anchor for alignment) -->
+  <nav class="navbar navbar-expand w-100 p-0 mb-3 border-top border-bottom border-white-10">
+    <ul class="navbar-nav d-flex justify-content-between w-100 text-center flex-row">
+      <li class="nav-item flex-fill"><a class="nav-link text-white fw-bold py-2" href="#">Main</a></li>
+      <li class="nav-item flex-fill"><a class="nav-link text-white-50 py-2" href="#">Monthly Review</a></li>
+      <li class="nav-item flex-fill"><a class="nav-link text-white-50 py-2" href="#">Settings</a></li>
+    </ul>
+  </nav>
+
+  <!-- 3. LIST -->
+  <div class="flex-grow-1 overflow-y-auto px-1">
     <app-transaction-list [items]="transactions"></app-transaction-list>
   </div>
 
-  <div class="d-flex gap-2 w-100 mt-auto pt-2 border-top border-white-10">
-    <button class="btn flex-fill d-flex align-items-center justify-content-center gap-2 py-2 py-sm-2_5 text-white fw-medium action-btn glass-btn-primary">
-      <i class="bi bi-plus-circle fs-5"></i> Add
-    </button>
-    <button class="btn flex-fill d-flex align-items-center justify-content-center gap-2 py-2 py-sm-2_5 text-white fw-medium action-btn glass-btn-secondary">
-      <i class="bi bi-pencil-square fs-5"></i> Edit
-    </button>
+  <!-- 4. ACTIONS -->
+  <div class="d-flex gap-2 w-100 pt-3 border-top border-white-10">
+    <button class="btn flex-fill py-2 text-white fw-medium glass-btn-primary">Add</button>
+    <button class="btn flex-fill py-2 text-white fw-medium glass-btn-secondary">Edit</button>
   </div>
 </div>

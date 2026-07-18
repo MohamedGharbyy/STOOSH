@@ -46,15 +46,6 @@ app-transaction-list {
   border-radius: 10px;
 }
 
-@media (max-width: 576px) {
-  .active-tab {
-    padding-left: 8px !important;
-    padding-right: 8px !important;
-  }
-  .card {
-    height: 75vh !important;
-  }
-}
 .action-btn {
   border-radius: 12px !important;
   font-size: calc(0.9rem + 0.15vw) !important;
