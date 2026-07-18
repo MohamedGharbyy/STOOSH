@@ -13,10 +13,27 @@
   
   <div class="w-100 px-2" style="max-width: 500px;">
     
-    @if (isLoggedIn) {
-      <app-dashboard [title]="title()" [transactions]="transactions"></app-dashboard>
+    @if (isLoading()) {
+      <div class="card p-4 p-sm-5 rounded-4 shadow border-0 glass-card w-100 d-flex flex-column align-items-center justify-content-center" style="min-height: 400px;">
+        
+        <div class="d-flex flex-column align-items-center text-white mb-4">
+          <i class="bi bi-wallet2 text-white mb-2 brand-identity-pulse" style="font-size: 2.5rem;"></i>
+          <h1 class="text-center text-white m-0 tracking-identity" style="font-family: 'Optima'; letter-spacing: 0.2rem; user-select: none;">STOO$H</h1>
+          <p class="text-white-50 small text-center mt-1">Personal Wealth Tracker</p>
+        </div>
+
+        <div class="spinner-border text-success" role="status" style="width: 2rem; height: 2rem; border-width: 0.22em;">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+
+      </div>
     } @else {
-      <app-auth (loginSuccess)="onLoginSuccess()"></app-auth>
+      @if (isLoggedIn()) {
+        <app-dashboard [title]="title()" [transactions]="transactions"></app-dashboard>
+      } @else {
+        <app-auth (loginSuccess)="onLoginSuccess()"></app-auth>
+      }
     }
+
   </div>
 </div>

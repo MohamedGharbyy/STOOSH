@@ -12,7 +12,7 @@ import { Transaction } from './transaction.model';
 export class App implements AfterViewInit {
   @ViewChild('bgVideo') bgVideo!: ElementRef<HTMLVideoElement>;
 
-  protected readonly title = signal('STOOSH');
+  protected readonly title = signal('STOO$H');
   public transactions: Transaction[] = [{
     id: 1,
     name: 'Salary',
@@ -27,15 +27,22 @@ export class App implements AfterViewInit {
     type: 'expense',
     date: new Date('2026-07-17')
   }];
-  isLoggedIn = false;
+  
+  isLoggedIn = signal(false);
+  isLoading = signal(false);
 
   onLoginSuccess() {
-    this.isLoggedIn = true;
+    this.isLoading.set(true);
+    setTimeout(() => {
+      this.isLoggedIn.set(true);
+      this.isLoading.set(false);
+    }, 1000);
   }
 
   ngAfterViewInit() {
     const video = this.bgVideo?.nativeElement;
     if (video) {
+      video.muted = true;
       video.play().catch(() => {});
     }
   }

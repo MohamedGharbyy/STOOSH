@@ -12,7 +12,9 @@ export class Auth {
   @Output() loginSuccess = new EventEmitter<void>();
 
   handleAuthSubmit() {
-    this.loginSuccess.emit();
+    if (this.authMode === 'login') {
+      this.loginSuccess.emit();
+    }
   }
 
   switchAuthMode(mode: 'login' | 'signup' | 'forgot') {
