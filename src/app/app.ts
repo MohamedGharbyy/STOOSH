@@ -24,11 +24,9 @@ export class App {
     type: 'expense',
     date: new Date('2026-07-17')
   }];
-  // Update the string literal union to accept 'forgot'
   isLoggedIn = false;
   authMode: 'login' | 'signup' | 'forgot' = 'login';
 
-  // Quick simulation methods for your form submissions
   handleAuthSubmit() {
     this.isLoggedIn = true;
   }

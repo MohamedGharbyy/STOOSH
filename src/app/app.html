@@ -1,4 +1,3 @@
-<!-- Background Video Element -->
 <video 
   autoplay 
   muted 
@@ -9,15 +8,11 @@
   <source src="bg-waves.mp4" type="video/mp4">
 </video>
 
-<!-- Fluid App Container -->
 <div class="container-fluid position-relative d-flex flex-column align-items-center justify-content-center min-vh-100 py-3 py-md-4 overflow-hidden" style="z-index: 10;">
   
-  <!-- Responsive Layout Framework -->
   <div class="w-100 px-2" style="max-width: 500px;">
     
     @if (isLoggedIn) {
-      <!-- ================= MAIN APP VIEW ================= -->
-      <!-- Obsidian Glass Navbar -->
       <nav class="navbar navbar-expand rounded-4 p-2 mb-3 glass-card w-100">
         <div class="container-fluid px-1 px-sm-2">
           <ul class="navbar-nav d-flex justify-content-between w-100 text-center flex-row">
@@ -34,7 +29,6 @@
         </div>
       </nav>
 
-      <!-- Main STOOSH Dashboard Card -->
       <div class="card p-3 p-sm-4 rounded-4 shadow border-0 glass-card w-100" style="min-height: 75vh; max-height: 85vh; display: flex; flex-direction: column;">
         <div class="d-flex justify-content-center align-items-center text-white mb-2">
           <i class="bi bi-wallet2 responsive-icon mb-1 me-2 me-sm-3 text-white"></i>
@@ -55,28 +49,23 @@
         </div>
       </div>
     } @else {
-      <!-- ================= GATEWAY AUTH VIEW ================= -->
       <div class="card p-4 p-sm-5 rounded-4 shadow border-0 glass-card w-100 d-flex flex-column align-items-center">
         
-        <!-- App Identity -->
         <div class="d-flex flex-column align-items-center text-white mb-4">
           <i class="bi bi-wallet2 text-white mb-2" style="font-size: 2.5rem;"></i>
           <h1 class="text-center text-white m-0" style="font-family: 'Optima'; letter-spacing: 0.2rem; user-select: none;">STOOSH</h1>
           <p class="text-white-50 small text-center mt-1">Personal Wealth Tracker</p>
         </div>
 
-        <!-- Dynamic Auth Headings -->
         <h4 class="text-white mb-4 fw-medium tracking-wide w-100 text-start">
           @if (authMode === 'login') { Sign In }
           @else if (authMode === 'signup') { Create Account }
           @else { Reset Password }
         </h4>
 
-        <!-- Form Layout Wrapper -->
         <form (ngSubmit)="handleAuthSubmit()" class="w-100 d-flex flex-column gap-3">
           
           @if (authMode === 'forgot') {
-            <!-- Reset Password State Explanation -->
             <p class="text-white-50 small mb-2">
               Enter the email address associated with your account and we'll send you instructions to safely reset your credentials.
             </p>
@@ -97,7 +86,6 @@
             </div>
 
           } @else {
-            <!-- Login & Signup Standard Flows -->
             @if (authMode === 'signup') {
               <div class="form-group">
                 <label class="text-white-50 small mb-1">Full Name</label>
