@@ -1,11 +1,8 @@
-<!-- App Layout with Sidebar -->
 <div class="stoosh-app-layout">
   
-  <!-- Sidebar Navigation - Fixed 250px width, collapses to 78px -->
   <nav class="stoosh-sidebar" [class.collapsed]="sidebarCollapsed">
     <div class="stoosh-nav h-100 d-flex flex-column">
       
-      <!-- Brand - STOO$H logo with wallet icon -->
       <div class="stoosh-nav-header">
         <div class="d-flex align-items-center justify-content-center">
           <img src="wallet-icon.svg" alt="Wallet" class="stoosh-nav-logo-icon" />
@@ -13,7 +10,6 @@
         </div>
       </div>
       
-      <!-- Navigation Links -->
       <ul class="navbar-nav flex-column w-100">
         <li class="nav-item">
           <a class="stoosh-nav-link active" href="#">
@@ -41,7 +37,6 @@
         </li>
       </ul>
       
-      <!-- Collapse Toggle -->
       <div class="mt-auto pt-3 border-top border-subtle">
         <button class="stoosh-btn stoosh-btn-ghost w-100" (click)="toggleSidebar()">
           <i class="bi" [class.bi-chevron-left]="!sidebarCollapsed" [class.bi-chevron-right]="sidebarCollapsed"></i>
@@ -52,10 +47,8 @@
     </div>
   </nav>
   
-  <!-- Main Content Area - Fills remaining space -->
   <div class="stoosh-main-wrapper">
     
-    <!-- Top Header with Brand Alignment -->
     <header class="stoosh-header">
       <div class="d-flex align-items-center">
         <h1 class="stoosh-header-title mb-0">Dashboard</h1>
@@ -73,11 +66,9 @@
       </div>
     </header>
     
-    <!-- Main Content - Flex child with flex-grow: 1 and width: 100% -->
     <main class="stoosh-main-content">
       <div class="container-fluid">
         
-        <!-- Summary Cards -->
         <div class="row g-3 mb-4">
           <div class="col-12 col-sm-6 col-lg-3">
             <div class="stoosh-card p-3">
@@ -105,7 +96,6 @@
           </div>
         </div>
         
-        <!-- Transaction List -->
         <div class="stoosh-card p-3">
           <h3 class="text-white mb-3" style="font-size: 1.125rem; font-weight: 600;">Recent Transactions</h3>
           <app-transaction-list [items]="transactions"></app-transaction-list>
