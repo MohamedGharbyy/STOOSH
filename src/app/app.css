@@ -1,9 +1,7 @@
-/* Loading State - Dark Professional */
 .tracking-identity {
   letter-spacing: 0.25rem !important;
 }
 
-/* Brand Identity - Optima font with wide letter-spacing and Burnt Orange */
 .brand-identity {
   font-family: var(--stoosh-font-brand) !important;
   letter-spacing: 0.25rem !important;
@@ -11,7 +9,6 @@
   user-select: none;
 }
 
-/* Ensure spinner uses burnt orange */
 .spinner-border.text-burnt-orange {
   color: var(--stoosh-accent-burnt-orange) !important;
 }

@@ -1,4 +1,3 @@
-<!-- Dark Professional Layout -->
 <div class="min-vh-100 d-flex flex-column" style="background-color: var(--stoosh-bg-primary);">
   
   @if (isLoading()) {
@@ -19,7 +18,6 @@
     @if (isLoggedIn()) {
       <app-dashboard [title]="title()" [transactions]="transactions"></app-dashboard>
     } @else {
-<!-- Login Page with Video Background -->
       <div class="login-page">
         <video class="login-video-bg" autoplay muted loop playsinline>
           <source src="bg-waves.mp4" type="video/mp4">
