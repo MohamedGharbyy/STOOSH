@@ -1,3 +1,79 @@
+/* ========================================
+   STOO$H DESIGN SYSTEM - Dark Professional
+   ======================================== */
+
+/* ===== COLOR PALETTE ===== */
+:root {
+  /* Primary Background */
+  --stoosh-bg-primary: #0a0a0a;
+  --stoosh-bg-secondary: #121212;
+  --stoosh-bg-tertiary: #1a1a1a;
+  
+  /* Surface Colors */
+  --stoosh-surface-card: #161616;
+  --stoosh-surface-elevated: #1e1e1e;
+  --stoosh-surface-overlay: #252525;
+  
+  /* Accent Colors */
+  --stoosh-accent-burnt-orange: #FF4500;
+  --stoosh-accent-orange-hover: #FF5A1F;
+  --stoosh-accent-orange-active: #E03E00;
+  
+  /* Text Colors */
+  --stoosh-text-primary: #ffffff;
+  --stoosh-text-secondary: #a0a0a0;
+  --stoosh-text-tertiary: #707070;
+  
+  /* Status Colors */
+  --stoosh-success: #22c55e;
+  --stoosh-danger: #ef4444;
+  --stoosh-warning: #f59e0c;
+  
+  /* Border Colors */
+  --stoosh-border-subtle: rgba(255, 255, 255, 0.05);
+  --stoosh-border-default: rgba(255, 255, 255, 0.08);
+  --stoosh-border-strong: rgba(255, 255, 255, 0.12);
+  
+  /* Interactive States */
+  --stoosh-hover-overlay: rgba(255, 255, 255, 0.03);
+  --stoosh-focus-ring: rgba(255, 69, 0, 0.4);
+}
+
+/* ===== TYPOGRAPHY ===== */
+:root {
+  /* Font Families - Optima for brand identity, Inter for UI */
+  --stoosh-font-brand: 'Optima', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --stoosh-font-display: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --stoosh-font-mono: 'JetBrains Mono', 'Fira Code', 'SF Mono', 'Monaco', monospace;
+  
+  /* Font Weights */
+  --stoosh-weight-regular: 400;
+  --stoosh-weight-medium: 500;
+  --stoosh-weight-semibold: 600;
+  --stoosh-weight-bold: 700;
+  
+  /* Font Sizes */
+  --stoosh-text-xs: 0.75rem;
+  --stoosh-text-sm: 0.875rem;
+  --stoosh-text-base: 1rem;
+  --stoosh-text-lg: 1.125rem;
+  --stoosh-text-xl: 1.25rem;
+  --stoosh-text-2xl: 1.5rem;
+  --stoosh-text-3xl: 1.875rem;
+}
+
+/* ===== SPACING & LAYOUT ===== */
+:root {
+  --stoosh-sidebar-width: 250px;
+  --stoosh-sidebar-width-collapsed: 78px;
+  --stoosh-header-height: 56px;
+  --stoosh-radius-sm: 6px;
+  --stoosh-radius-md: 8px;
+  --stoosh-radius-lg: 12px;
+  --stoosh-radius-xl: 16px;
+}
+
+/* ===== BASE STYLES ===== */
 html, body {
   margin: 0 !important;
   padding: 0 !important;
@@ -7,14 +83,558 @@ html, body {
   max-height: 100vh !important;
   overflow: hidden !important;
   overscroll-behavior: none !important;
-  background-color: #0d0f12 !important;
+  background-color: var(--stoosh-bg-primary) !important;
+  color: var(--stoosh-text-primary);
+  font-family: var(--stoosh-font-display);
 }
 
-.container-fluid {
-  max-height: 100vh !important;
-  overflow: hidden !important;
+/* ===== SCROLLBAR ===== */
+.overflow-y-auto::-webkit-scrollbar {
+  width: 6px;
+}
+.overflow-y-auto::-webkit-scrollbar-track {
+  background: transparent;
+}
+.overflow-y-auto::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
 }
 
+/* ===== ANIMATION CURVES ===== */
+:root {
+  --stoosh-ease-snappy: cubic-bezier(0.4, 0, 0.2, 1);
+  --stoosh-ease-smooth: cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+/* ===== UTILITY CLASSES ===== */
+.py-2_5 {
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+}
+
+/* Flex utility for main content area */
+.flex-1 {
+  flex: 1 1 0%;
+  min-width: 0;
+}
+
+.extreme-small {
+  font-size: 0.78rem !important;
+  opacity: 0.75;
+  transition: opacity 0.2s var(--stoosh-ease-snappy);
+}
+.extreme-small:hover {
+  opacity: 1;
+}
+
+/* Link Hover Utility */
+.link-hover {
+  transition: opacity 0.2s var(--stoosh-ease-snappy);
+}
+.link-hover:hover {
+  opacity: 0.8;
+}
+
+/* ===== DARK PROFESSIONAL COMPONENTS ===== */
+
+/* App Layout Container - Flex parent for sidebar and main content */
+.stoosh-app-layout {
+  display: flex;
+  flex-direction: row;
+  min-height: 100vh;
+  width: 100%;
+  background-color: var(--stoosh-bg-primary);
+  overflow-x: hidden;
+}
+
+/* Main Content Wrapper - Flex child that grows to fill remaining space */
+.stoosh-main-wrapper {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  width: 100%;
+  min-width: 0;
+}
+
+/* Main Content - Flex child with flex-grow: 1 and width: 100% */
+.stoosh-main-content {
+  flex-grow: 1;
+  width: 100%;
+  overflow-y: auto;
+  padding: 16px;
+}
+
+/* Sidebar Navigation */
+.stoosh-sidebar {
+  width: var(--stoosh-sidebar-width);
+  background-color: var(--stoosh-bg-secondary);
+  border-right: 1px solid var(--stoosh-border-subtle);
+  flex-shrink: 0;
+  transition: width 0.3s var(--stoosh-ease-snappy);
+  z-index: 100;
+  overflow: hidden;
+}
+
+.stoosh-sidebar.collapsed {
+  width: var(--stoosh-sidebar-width-collapsed);
+}
+
+.stoosh-sidebar.collapsed .nav-text {
+  opacity: 0;
+  visibility: hidden;
+  width: 0;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.stoosh-sidebar.collapsed .stoosh-nav-link {
+  justify-content: center;
+  padding: 12px !important;
+}
+
+.stoosh-sidebar.collapsed .stoosh-nav-header {
+  padding: 12px 8px !important;
+}
+
+.stoosh-sidebar.collapsed .stoosh-nav-header .d-flex {
+  justify-content: center;
+}
+
+.stoosh-sidebar.collapsed .stoosh-nav-header .ms-2 {
+  display: none;
+}
+
+.stoosh-sidebar.collapsed .border-top {
+  border-top: none !important;
+}
+
+.stoosh-sidebar.collapsed .stoosh-btn-ghost {
+  padding: 12px !important;
+  justify-content: center;
+}
+
+.stoosh-nav {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 16px;
+}
+
+.stoosh-nav-header {
+  padding: 12px 16px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--stoosh-border-subtle);
+}
+
+.stoosh-nav-brand {
+  font-family: var(--stoosh-font-brand);
+  font-weight: var(--stoosh-weight-bold);
+  font-size: 1.5rem;
+  letter-spacing: 0.25rem;
+  color: var(--stoosh-accent-burnt-orange);
+  margin: 0;
+  transition: opacity 0.3s var(--stoosh-ease-snappy);
+}
+
+.stoosh-sidebar.collapsed .stoosh-nav-brand {
+  opacity: 0;
+  visibility: hidden;
+  width: 0;
+}
+
+.stoosh-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  color: var(--stoosh-text-secondary);
+  text-decoration: none;
+  border-radius: var(--stoosh-radius-md);
+  transition: all 0.2s var(--stoosh-ease-snappy);
+  position: relative;
+  margin-bottom: 4px;
+}
+
+.nav-text {
+  transition: opacity 0.3s var(--stoosh-ease-snappy), width 0.3s var(--stoosh-ease-snappy), margin 0.3s var(--stoosh-ease-snappy);
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.stoosh-nav-link:hover {
+  color: var(--stoosh-text-primary);
+  background-color: var(--stoosh-hover-overlay);
+}
+
+.stoosh-nav-link.active {
+  color: var(--stoosh-text-primary);
+  background-color: rgba(255, 69, 0, 0.12);
+}
+
+.stoosh-nav-link.active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 20px;
+  background-color: var(--stoosh-accent-burnt-orange);
+  border-radius: 0 3px 3px 0;
+}
+
+.stoosh-sidebar.collapsed .stoosh-nav-link.active::before {
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 3px;
+}
+
+.stoosh-nav-icon {
+  font-size: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+}
+
+/* Sidebar Logo Icon */
+.stoosh-nav-logo-icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.stoosh-sidebar.collapsed .stoosh-nav-logo-icon {
+  width: 28px;
+  height: 28px;
+}
+
+/* Top Header */
+.stoosh-header {
+  height: var(--stoosh-header-height);
+  background-color: var(--stoosh-bg-secondary);
+  border-bottom: 1px solid var(--stoosh-border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  flex-shrink: 0;
+}
+
+.stoosh-header-title {
+  font-family: var(--stoosh-font-display);
+  font-weight: var(--stoosh-weight-semibold);
+  font-size: 1.25rem;
+  color: var(--stoosh-text-primary);
+  margin: 0;
+}
+
+.stoosh-header-actions {
+  display: flex;
+  gap: 12px;
+}
+
+/* Header Brand - Top-left alignment with sidebar */
+.stoosh-header-brand {
+  font-family: var(--stoosh-font-brand);
+  font-weight: var(--stoosh-weight-bold);
+  font-size: 1.5rem;
+  letter-spacing: 0.25rem;
+  color: var(--stoosh-accent-burnt-orange);
+  margin: 0;
+  user-select: none;
+}
+
+/* Buttons */
+.stoosh-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: var(--stoosh-radius-md);
+  font-weight: var(--stoosh-weight-medium);
+  font-size: var(--stoosh-text-sm);
+  transition: all 0.2s var(--stoosh-ease-snappy);
+  cursor: pointer;
+  border: 1px solid transparent;
+  user-select: none;
+}
+
+.stoosh-btn-primary {
+  background-color: var(--stoosh-accent-burnt-orange);
+  color: var(--stoosh-text-primary);
+  border-color: var(--stoosh-accent-burnt-orange);
+}
+
+.stoosh-btn-primary:hover {
+  background-color: var(--stoosh-accent-orange-hover);
+  border-color: var(--stoosh-accent-orange-hover);
+  transform: translateY(-1px);
+}
+
+.stoosh-btn-primary:active {
+  transform: translateY(0);
+}
+
+.stoosh-btn-secondary {
+  background-color: transparent;
+  color: var(--stoosh-text-secondary);
+  border-color: var(--stoosh-border-default);
+}
+
+.stoosh-btn-secondary:hover {
+  color: var(--stoosh-text-primary);
+  background-color: var(--stoosh-hover-overlay);
+  border-color: var(--stoosh-border-strong);
+}
+
+.stoosh-btn-ghost {
+  background-color: transparent;
+  color: var(--stoosh-text-secondary);
+  border-color: transparent;
+}
+
+.stoosh-btn-ghost:hover {
+  color: var(--stoosh-text-primary);
+  background-color: var(--stoosh-hover-overlay);
+}
+
+/* Cards & Surfaces */
+.stoosh-card {
+  background-color: var(--stoosh-surface-card);
+  border: 1px solid var(--stoosh-border-subtle);
+  border-radius: var(--stoosh-radius-lg);
+}
+
+.stoosh-card-elevated {
+  background-color: var(--stoosh-surface-elevated);
+  border: 1px solid var(--stoosh-border-default);
+}
+
+/* Data Table - Transaction List */
+.stoosh-transaction-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 4px;
+}
+
+.stoosh-transaction-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background-color: var(--stoosh-bg-tertiary);
+  border: 1px solid var(--stoosh-border-subtle);
+  border-radius: var(--stoosh-radius-md);
+  transition: all 0.2s var(--stoosh-ease-snappy);
+}
+
+.stoosh-transaction-row:hover {
+  background-color: var(--stoosh-surface-overlay);
+  border-color: var(--stoosh-border-default);
+}
+
+.stoosh-transaction-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.stoosh-transaction-icon.income {
+  background-color: rgba(34, 197, 94, 0.15);
+}
+
+.stoosh-transaction-icon.expense {
+  background-color: rgba(239, 68, 68, 0.15);
+}
+
+.stoosh-transaction-details {
+  flex: 1;
+  margin-left: 12px;
+  min-width: 0;
+}
+
+.stoosh-transaction-name {
+  font-family: var(--stoosh-font-display);
+  font-weight: var(--stoosh-weight-medium);
+  font-size: var(--stoosh-text-base);
+  color: var(--stoosh-text-primary);
+  margin: 0;
+}
+
+.stoosh-transaction-date {
+  font-size: var(--stoosh-text-xs);
+  color: var(--stoosh-text-tertiary);
+  margin: 0;
+}
+
+.stoosh-transaction-amount {
+  font-family: var(--stoosh-font-mono);
+  font-weight: var(--stoosh-weight-semibold);
+  font-size: var(--stoosh-text-lg);
+  letter-spacing: -0.02em;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.stoosh-transaction-amount.income {
+  color: var(--stoosh-success);
+}
+
+.stoosh-transaction-amount.expense {
+  color: var(--stoosh-danger);
+}
+
+/* Financial Figures - Monospaced for alignment */
+.stoosh-figure {
+  font-family: var(--stoosh-font-mono);
+  font-weight: var(--stoosh-weight-semibold);
+  letter-spacing: -0.02em;
+}
+
+.stoosh-figure-large {
+  font-size: 1.75rem;
+  line-height: 1.2;
+}
+
+.stoosh-figure-medium {
+  font-size: 1.25rem;
+  line-height: 1.3;
+}
+
+.stoosh-figure-small {
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+/* Inputs */
+.stoosh-input {
+  background-color: var(--stoosh-bg-tertiary);
+  border: 1px solid var(--stoosh-border-default);
+  border-radius: var(--stoosh-radius-md);
+  padding: 10px 14px;
+  color: var(--stoosh-text-primary);
+  font-size: var(--stoosh-text-base);
+  transition: all 0.2s var(--stoosh-ease-snappy);
+  width: 100%;
+}
+
+.stoosh-input:focus {
+  background-color: var(--stoosh-surface-overlay);
+  border-color: var(--stoosh-accent-burnt-orange);
+  box-shadow: 0 0 0 3px var(--stoosh-focus-ring);
+  outline: none;
+}
+
+.stoosh-input::placeholder {
+  color: var(--stoosh-text-tertiary);
+}
+
+/* Status Indicators */
+.stoosh-status-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.stoosh-status-dot.success {
+  background-color: var(--stoosh-success);
+}
+
+.stoosh-status-dot.danger {
+  background-color: var(--stoosh-danger);
+}
+
+.stoosh-status-dot.warning {
+  background-color: var(--stoosh-warning);
+}
+
+/* Utility Classes */
+.text-burnt-orange {
+  color: var(--stoosh-accent-burnt-orange) !important;
+}
+
+.bg-burnt-orange {
+  background-color: var(--stoosh-accent-burnt-orange) !important;
+}
+
+.border-subtle {
+  border-color: var(--stoosh-border-subtle) !important;
+}
+
+/* ===== LOGIN PAGE - Video Background ===== */
+.login-page {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.login-video-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.login-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 10, 10, 0.6);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.login-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 650px;
+  padding: 20px;
+  margin: 0 auto;
+}
+
+/* Glass Card for Login */
+.glass-card {
+  background: rgba(22, 22, 22, 0.7) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border: 1px solid var(--stoosh-border-default) !important;
+  border-radius: var(--stoosh-radius-lg) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Action Button Styles */
+.action-btn {
+  border-radius: var(--stoosh-radius-md) !important;
+  font-size: var(--stoosh-text-sm) !important;
+  border: 1px solid var(--stoosh-border-default) !important;
+  transition: all 0.2s var(--stoosh-ease-snappy) !important;
+  user-select: none;
+}
+
+.border-white-10 {
+  border-color: var(--stoosh-border-subtle) !important;
+}
+
+/* Responsive Typography */
 .responsive-title {
   font-size: calc(1.6rem + 1vw) !important;
   margin: 0 !important;
@@ -31,95 +651,19 @@ html, body {
   white-space: nowrap;
 }
 
-app-transaction-list {
-  font-size: calc(0.9rem + 0.15vw) !important;
-}
-
-.overflow-y-auto::-webkit-scrollbar {
-  width: 6px;
-}
-.overflow-y-auto::-webkit-scrollbar-track {
-  background: transparent;
-}
-.overflow-y-auto::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.15);
-  border-radius: 10px;
-}
-
-.action-btn {
-  border-radius: 12px !important;
-  font-size: calc(0.9rem + 0.15vw) !important;
-  border: 1px solid rgba(255, 255, 255, 0.12) !important;
-  transition: all 0.2s ease-in-out !important;
+/* Brand Identity - Optima font with wide letter-spacing */
+.brand-identity {
+  font-family: var(--stoosh-font-brand) !important;
+  letter-spacing: 0.25rem !important;
+  color: var(--stoosh-accent-burnt-orange) !important;
   user-select: none;
 }
 
-.border-white-10 {
-  border-color: rgba(255, 255, 255, 0.08) !important;
-}
-
-.glass-btn-primary {
-  background: rgba(255, 255, 255, 0.06) !important;
-}
-.glass-btn-primary:hover {
-  background: rgba(255, 255, 255, 0.15) !important;
-  border-color: rgba(255, 255, 255, 0.25) !important;
-  transform: translateY(-1px);
-}
-.glass-btn-primary:active {
-  transform: translateY(0);
-}
-
-.glass-btn-secondary {
-  background: transparent !important;
-}
-.glass-btn-secondary:hover {
-  background: rgba(255, 255, 255, 0.08) !important;
-  border-color: rgba(255, 255, 255, 0.2) !important;
-  transform: translateY(-1px);
-}
-.glass-btn-secondary:active {
-  transform: translateY(0);
-}
-.glass-input {
-  background: rgba(255, 255, 255, 0.04) !important;
-  border: 1px solid rgba(255, 255, 255, 0.08) !important;
-  border-radius: 10px !important;
-  padding: 10px 14px !important;
-  transition: all 0.2s ease-in-out !important;
-}
-
-.glass-input:focus {
-  background: rgba(255, 255, 255, 0.08) !important;
-  border-color: rgba(255, 255, 255, 0.25) !important;
-  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.04) !important;
-  outline: none !important;
-}
-
-.glass-input::placeholder {
-  color: rgba(255, 255, 255, 0.25) !important;
+/* Tracking utility for wide letter-spacing */
+.tracking-identity {
+  letter-spacing: 0.25rem !important;
 }
 
 .tracking-wide {
-  letter-spacing: 0.05rem;
-}
-
-.py-2_5 {
-  padding-top: 10px !important;
-  padding-bottom: 10px !important;
-}
-.extreme-small {
-  font-size: 0.78rem !important;
-  opacity: 0.75;
-  transition: opacity 0.2s ease;
-}
-.extreme-small:hover {
-  opacity: 1;
-}
-
-.glass-card {
-  background: rgba(15, 22, 28, 0.65) !important;
-  backdrop-filter: blur(20px) !important;
-  -webkit-backdrop-filter: blur(20px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  letter-spacing: 0.2rem !important;
 }

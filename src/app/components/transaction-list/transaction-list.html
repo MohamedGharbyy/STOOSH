@@ -1,35 +1,33 @@
-<div class="transaction-container overflow-y-auto mt-2" style="max-height: 20rem;">
+<div class="transaction-container overflow-y-auto" style="max-height: 24rem;">
   
   @for (item of items; track item.id) {
-    <div class="d-flex align-items-center justify-content-between p-3 mb-2 rounded-3 border bg-light bg-opacity-50 transition-hover">
+    <div class="stoosh-transaction-row">
       
       <div class="d-flex align-items-center gap-3">
-        <div class="icon-wrapper d-flex align-items-center justify-content-center rounded-circle bg-white shadow-sm" style="width: 40px; height: 40px;">
+        <div class="stoosh-transaction-icon" [class.income]="item.type === 'income'" [class.expense]="item.type === 'expense'">
           @if (item.type === 'income') {
-            <i class="bi bi-arrow-up-circle-fill text-success fs-5"></i>
+            <i class="bi bi-arrow-up-circle-fill text-success"></i>
           } @else {
-            <i class="bi bi-arrow-down-circle-fill text-danger fs-5"></i>
+            <i class="bi bi-arrow-down-circle-fill text-danger"></i>
           }
         </div>
         
-        <div>
-          <p class="m-0 fw-bold text-dark" style="font-size: 0.95rem;">{{ item.name }}</p>
-          <small class="text-muted" style="font-size: 0.75rem;">{{ item.date | date:'mediumDate' }}</small>
+        <div class="stoosh-transaction-details">
+          <p class="stoosh-transaction-name mb-0">{{ item.name }}</p>
+          <small class="stoosh-transaction-date">{{ item.date | date:'mediumDate' }}</small>
         </div>
       </div>
-
-      <div class="text-end">
-        <span class="fw-bold" [class.text-success]="item.type === 'income'" [class.text-dark]="item.type === 'expense'">
-          {{ item.type === 'income' ? '+' : '-' }}{{ item.amount | currency:'USD':'symbol':'1.0-2' }}
-        </span>
-      </div>
-
+      
+      <span class="stoosh-transaction-amount" [class.income]="item.type === 'income'" [class.expense]="item.type === 'expense'">
+        {{ item.type === 'income' ? '+' : '-' }}{{ item.amount | currency:'USD':'symbol':'1.0-2' }}
+      </span>
+      
     </div>
   } @empty {
-    <div class="text-center py-5 text-muted">
-      <i class="bi bi-bezier2 fs-2 d-block mb-2"></i>
-      <span>No transactions yet.</span>
+    <div class="text-center py-5">
+      <i class="bi bi-bezier2 fs-2 d-block mb-2 text-secondary"></i>
+      <span class="text-secondary">No transactions yet.</span>
     </div>
   }
-
+  
 </div>

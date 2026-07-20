@@ -11,4 +11,10 @@ import { Transaction } from '../../transaction.model';
 export class Dashboard {
   @Input() title!: string;
   @Input() transactions: Transaction[] = [];
+  
+  sidebarCollapsed = false;
+  
+  toggleSidebar() {
+    this.sidebarCollapsed = !this.sidebarCollapsed;
+  }
 }

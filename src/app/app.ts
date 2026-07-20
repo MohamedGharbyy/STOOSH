@@ -1,4 +1,4 @@
-import { Component, signal, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { Auth } from './components/auth/auth';
 import { Dashboard } from './components/dashboard/dashboard';
 import { Transaction } from './transaction.model';
@@ -9,9 +9,7 @@ import { Transaction } from './transaction.model';
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
-export class App implements AfterViewInit {
-  @ViewChild('bgVideo') bgVideo!: ElementRef<HTMLVideoElement>;
-
+export class App {
   protected readonly title = signal('STOO$H');
   public transactions: Transaction[] = [{
     id: 1,
@@ -37,13 +35,5 @@ export class App implements AfterViewInit {
       this.isLoggedIn.set(true);
       this.isLoading.set(false);
     }, 1000);
-  }
-
-  ngAfterViewInit() {
-    const video = this.bgVideo?.nativeElement;
-    if (video) {
-      video.muted = true;
-      video.play().catch(() => {});
-    }
   }
 }

@@ -1,16 +1,13 @@
 <!-- App Layout with Sidebar -->
 <div class="stoosh-app-layout">
   
-  <!-- Sidebar Navigation - Fixed 250px width, collapses to 78px -->
+  <!-- Sidebar Navigation -->
   <nav class="stoosh-sidebar" [class.collapsed]="sidebarCollapsed">
     <div class="stoosh-nav h-100 d-flex flex-column">
       
-      <!-- Brand - STOO$H logo with wallet icon -->
+      <!-- Brand -->
       <div class="stoosh-nav-header">
-        <div class="d-flex align-items-center justify-content-center">
-          <img src="wallet-icon.svg" alt="Wallet" class="stoosh-nav-logo-icon" />
-          <h1 class="stoosh-nav-brand mb-0 ms-2">STOO$H</h1>
-        </div>
+        <h1 class="stoosh-nav-brand mb-0">STOO$H</h1>
       </div>
       
       <!-- Navigation Links -->
@@ -52,13 +49,14 @@
     </div>
   </nav>
   
-  <!-- Main Content Area - Fills remaining space -->
-  <div class="stoosh-main-wrapper">
+  <!-- Main Content Area -->
+  <div class="d-flex flex-column flex-grow-1">
     
     <!-- Top Header with Brand Alignment -->
     <header class="stoosh-header">
       <div class="d-flex align-items-center">
-        <h1 class="stoosh-header-title mb-0">Dashboard</h1>
+        <h1 class="stoosh-header-brand">STOO$H</h1>
+        <h2 class="stoosh-header-title mb-0 ms-4">/ {{ title() }}</h2>
       </div>
       
       <div class="stoosh-header-actions">
@@ -73,8 +71,8 @@
       </div>
     </header>
     
-    <!-- Main Content - Flex child with flex-grow: 1 and width: 100% -->
-    <main class="stoosh-main-content">
+    <!-- Main Content -->
+    <main class="flex-grow-1 overflow-y-auto p-4">
       <div class="container-fluid">
         
         <!-- Summary Cards -->
