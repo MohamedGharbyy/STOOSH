@@ -1,0 +1,11 @@
+/* StatCard component uses global styles from src/styles.css
+   This file is for any component-specific overrides if needed */
+   
+/* The following styles are already defined in src/styles.css:
+   - .stoosh-card
+   - .stoosh-figure
+   - .stoosh-figure-large
+   - .stoosh-figure-medium
+   - .stoosh-figure-small
+   - .text-success, .text-danger, .text-warning
+*/

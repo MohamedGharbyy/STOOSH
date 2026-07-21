@@ -16,7 +16,12 @@
     </div>
   } @else {
     @if (isLoggedIn()) {
-      <app-dashboard [title]="title()" [transactions]="transactions"></app-dashboard>
+      <app-dashboard 
+        [title]="title()" 
+        [transactions]="transactions"
+        (sidebarToggle)="onSidebarToggle()"
+        (headerAction)="onHeaderAction($event)">
+      </app-dashboard>
     } @else {
       <div class="login-page">
         <video class="login-video-bg" autoplay muted loop playsinline>
@@ -30,4 +35,3 @@
     }
   }
   
-</div>

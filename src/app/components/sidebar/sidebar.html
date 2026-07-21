@@ -1,0 +1,30 @@
+<nav class="stoosh-sidebar" [class.collapsed]="collapsed">
+  <div class="stoosh-nav h-100 d-flex flex-column">
+    
+    <div class="stoosh-nav-header">
+      <div class="d-flex align-items-center justify-content-center">
+        <img src="wallet-icon.svg" alt="Wallet" class="stoosh-nav-logo-icon" />
+        <h1 class="stoosh-nav-brand mb-0 ms-2">STOO$H</h1>
+      </div>
+    </div>
+    
+    <ul class="navbar-nav flex-column w-100">
+      @for (item of navItems; track item.label) {
+        <li class="nav-item">
+          <a class="stoosh-nav-link" [class.active]="item.active" href="#">
+            <i class="bi {{ item.icon }} stoosh-nav-icon"></i>
+            <span class="nav-text">{{ item.label }}</span>
+          </a>
+        </li>
+      }
+    </ul>
+    
+    <div class="mt-auto pt-3 border-top border-subtle">
+      <button class="stoosh-btn stoosh-btn-ghost w-100" (click)="onToggleSidebar()">
+        <i class="bi" [class.bi-chevron-left]="!collapsed" [class.bi-chevron-right]="collapsed"></i>
+        <span class="nav-text">Collapse</span>
+      </button>
+    </div>
+    
+  </div>
+</nav>

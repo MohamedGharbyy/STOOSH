@@ -1,0 +1,15 @@
+<div class="stoosh-card p-3">
+  <p class="text-secondary small mb-1">{{ label }}</p>
+  <p class="stoosh-figure mb-0" 
+     [ngClass]="{
+       'stoosh-figure-large': size === 'large',
+       'stoosh-figure-medium': size === 'medium',
+       'stoosh-figure-small': size === 'small',
+       'text-white': variant === 'default',
+       'text-success': variant === 'success',
+       'text-danger': variant === 'danger',
+       'text-warning': variant === 'warning'
+     }">
+    {{ value }}
+  </p>
+</div>

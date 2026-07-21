@@ -1,0 +1,11 @@
+/* TransactionRow component uses global styles from src/styles.css
+   This file is for any component-specific overrides if needed */
+   
+/* The following styles are already defined in src/styles.css:
+   - .stoosh-transaction-row
+   - .stoosh-transaction-icon
+   - .stoosh-transaction-details
+   - .stoosh-transaction-name
+   - .stoosh-transaction-date
+   - .stoosh-transaction-amount
+*/

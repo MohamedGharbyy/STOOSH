@@ -1,0 +1,14 @@
+<header class="stoosh-header">
+  <div class="d-flex align-items-center">
+    <h1 class="stoosh-header-title mb-0">{{ title }}</h1>
+  </div>
+  
+  <div class="stoosh-header-actions">
+    @for (action of actions; track action.action) {
+      <button class="stoosh-btn stoosh-btn-{{ action.variant }} action-btn" (click)="onActionClick(action.action)">
+        <i class="bi {{ action.icon }}"></i>
+        {{ action.label }}
+      </button>
+    }
+  </div>
+</header>

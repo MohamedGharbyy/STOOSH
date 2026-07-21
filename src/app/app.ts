@@ -25,7 +25,7 @@ export class App {
     type: 'expense',
     date: new Date('2026-07-17')
   }];
-  
+
   isLoggedIn = signal(false);
   isLoading = signal(false);
 
@@ -35,5 +35,20 @@ export class App {
       this.isLoggedIn.set(true);
       this.isLoading.set(false);
     }, 1000);
+  }
+
+  onSidebarToggle() {
+    // Handle sidebar toggle from dashboard
+    console.log('Sidebar toggled');
+  }
+
+  onHeaderAction(action: string) {
+    // Handle header actions from dashboard
+    console.log('Header action:', action);
+    if (action === 'add') {
+      // Add transaction logic
+    } else if (action === 'export') {
+      // Export logic
+    }
   }
 }

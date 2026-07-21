@@ -1,0 +1,14 @@
+/* Sidebar component uses global styles from src/styles.css
+   This file is for any component-specific overrides if needed */
+   
+/* The following styles are already defined in src/styles.css:
+   - .stoosh-sidebar
+   - .stoosh-sidebar.collapsed
+   - .stoosh-nav
+   - .stoosh-nav-header
+   - .stoosh-nav-brand
+   - .stoosh-nav-link
+   - .stoosh-nav-icon
+   - .stoosh-nav-logo-icon
+   - .nav-text
+*/
