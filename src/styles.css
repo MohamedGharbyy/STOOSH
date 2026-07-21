@@ -155,8 +155,12 @@ html, body {
   padding: 12px !important;
 }
 
+.stoosh-sidebar.collapsed .stoosh-nav {
+  padding: 0 !important;
+}
+
 .stoosh-sidebar.collapsed .stoosh-nav-header {
-  padding: 12px 8px !important;
+  padding: 12px 0 !important;
 }
 
 .stoosh-sidebar.collapsed .stoosh-nav-header .d-flex {
@@ -247,13 +251,12 @@ html, body {
 }
 
 .stoosh-sidebar.collapsed .stoosh-nav-link.active::before {
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border-radius: 3px;
+  left: 0;
+  transform: translateY(-50%);
+  border-radius: 0 3px 3px 0;
 }
 
 .stoosh-nav-icon {
-  color: var(--stoosh-text-secondary);
   font-size: 1.25rem;
   display: flex;
   align-items: center;
