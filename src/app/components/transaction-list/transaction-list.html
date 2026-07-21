@@ -4,23 +4,23 @@
     <div class="stoosh-transaction-row">
       
       <div class="d-flex align-items-center gap-3">
-        <div class="stoosh-transaction-icon" [class.income]="item.type === 'income'" [class.expense]="item.type === 'expense'">
-          @if (item.type === 'income') {
-            <i class="bi bi-arrow-up-circle-fill text-success"></i>
-          } @else {
-            <i class="bi bi-arrow-down-circle-fill text-danger"></i>
-          }
-        </div>
-        
-        <div class="stoosh-transaction-details">
-          <p class="stoosh-transaction-name mb-0">{{ item.name }}</p>
-          <small class="stoosh-transaction-date">{{ item.date | date:'mediumDate' }}</small>
-        </div>
-      </div>
+  <div class="stoosh-transaction-icon" [class.income]="item.type === 'income'" [class.expense]="item.type === 'expense'">
+    @if (item.type === 'income') {
+      <i class="bi bi-arrow-up-circle-fill text-jungle-teal"></i>
+    } @else {
+      <i class="bi bi-arrow-down-circle-fill text-burnt-orange"></i>
+    }
+  </div>
+  
+  <div class="stoosh-transaction-details">
+    <p class="stoosh-transaction-name mb-0">{{ item.name }}</p>
+    <small class="stoosh-transaction-date">{{ item.date | date:'mediumDate' }}</small>
+  </div>
+</div>
       
-      <span class="stoosh-transaction-amount" [class.income]="item.type === 'income'" [class.expense]="item.type === 'expense'">
-        {{ item.type === 'income' ? '+' : '-' }}{{ item.amount | currency:'USD':'symbol':'1.0-2' }}
-      </span>
+<span class="stoosh-transaction-amount" [class.income]="item.type === 'income'" [class.expense]="item.type === 'expense'">
+  {{ item.type === 'income' ? '+' : '-' }}{{ item.amount | currency:'USD':'symbol':'1.0-2' }}
+</span>
       
     </div>
   } @empty {

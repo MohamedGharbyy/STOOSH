@@ -1,28 +1,28 @@
 :root {
-  --stoosh-bg-primary: #0a0a0a;
-  --stoosh-bg-secondary: #121212;
-  --stoosh-bg-tertiary: #1a1a1a;
-  --stoosh-surface-card: #161616;
-  --stoosh-surface-elevated: #1e1e1e;
-  --stoosh-surface-overlay: #252525;
-  --stoosh-accent-burnt-orange: #FF4500;
-  --stoosh-accent-orange-hover: #FF5A1F;
-  --stoosh-accent-orange-active: #E03E00;
-  --stoosh-text-primary: #ffffff;
-  --stoosh-text-secondary: #a0a0a0;
-  --stoosh-text-tertiary: #707070;
-  --stoosh-success: #22c55e;
-  --stoosh-danger: #ef4444;
-  --stoosh-warning: #f59e0c;
-  --stoosh-border-subtle: rgba(255, 255, 255, 0.05);
-  --stoosh-border-default: rgba(255, 255, 255, 0.08);
-  --stoosh-border-strong: rgba(255, 255, 255, 0.12);
-  --stoosh-hover-overlay: rgba(255, 255, 255, 0.03);
-  --stoosh-focus-ring: rgba(255, 69, 0, 0.4);
+  --stoosh-bg-primary: #252627;
+  --stoosh-bg-secondary: #2a2b29;
+  --stoosh-bg-tertiary: #30312f;
+  --stoosh-surface-card: #2a2b29;
+  --stoosh-surface-elevated: #343633;
+  --stoosh-surface-overlay: #3d3f3c;
+  --stoosh-accent-burnt-orange: #BF4342;
+  --stoosh-accent-orange-hover: #cf4c4b;
+  --stoosh-accent-orange-active: #a83a39;
+  --stoosh-text-primary: #FFFFFA;
+  --stoosh-text-secondary: #c2c2bc;
+  --stoosh-text-tertiary: #91918a;
+  --stoosh-success: #56876D;
+  --stoosh-danger: #BF4342;
+  --stoosh-warning: #e09f3e;
+  --stoosh-border-subtle: rgba(255, 255, 250, 0.06);
+  --stoosh-border-default: rgba(255, 255, 250, 0.1);
+  --stoosh-border-strong: rgba(255, 255, 250, 0.16);
+  --stoosh-hover-overlay: rgba(255, 255, 250, 0.04);
+  --stoosh-focus-ring: rgba(191, 67, 66, 0.4);
 }
 
 :root {
-  --stoosh-font-brand: 'Optima', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --stoosh-font-brand: 'Optima';
   --stoosh-font-display: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --stoosh-font-mono: 'JetBrains Mono', 'Fira Code', 'SF Mono', 'Monaco', monospace;
   --stoosh-weight-regular: 400;
@@ -231,7 +231,7 @@ html, body {
 
 .stoosh-nav-link.active {
   color: var(--stoosh-text-primary);
-  background-color: rgba(255, 69, 0, 0.12);
+  background-color: rgba(191, 67, 66, 0.15);
 }
 
 .stoosh-nav-link.active::before {
@@ -404,11 +404,11 @@ html, body {
 }
 
 .stoosh-transaction-icon.income {
-  background-color: rgba(34, 197, 94, 0.15);
+  background-color: rgba(86, 135, 109, 0.15);
 }
 
 .stoosh-transaction-icon.expense {
-  background-color: rgba(239, 68, 68, 0.15);
+  background-color: rgba(191, 67, 66, 0.15);
 }
 
 .stoosh-transaction-details {
@@ -481,6 +481,7 @@ html, body {
 }
 
 .stoosh-input:focus {
+  color: var(--stoosh-text-primary);
   background-color: var(--stoosh-surface-overlay);
   border-color: var(--stoosh-accent-burnt-orange);
   box-shadow: 0 0 0 3px var(--stoosh-focus-ring);
@@ -518,6 +519,14 @@ html, body {
   background-color: var(--stoosh-accent-burnt-orange) !important;
 }
 
+.text-jungle-teal {
+  color: var(--stoosh-secondary-accent) !important;
+}
+
+.bg-jungle-teal {
+  background-color: var(--stoosh-secondary-accent) !important;
+}
+
 .border-subtle {
   border-color: var(--stoosh-border-subtle) !important;
 }
@@ -549,7 +558,7 @@ html, body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(10, 10, 10, 0.6);
+  background: rgba(52, 54, 51, 0.6);
   z-index: 1;
   pointer-events: none;
 }
@@ -564,12 +573,12 @@ html, body {
 }
 
 .glass-card {
-  background: rgba(22, 22, 22, 0.7) !important;
+  background: rgba(42, 43, 41, 0.7) !important;
   backdrop-filter: blur(20px) !important;
   -webkit-backdrop-filter: blur(20px) !important;
   border: 1px solid var(--stoosh-border-default) !important;
   border-radius: var(--stoosh-radius-lg) !important;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4) !important;
 }
 
 .action-btn {
