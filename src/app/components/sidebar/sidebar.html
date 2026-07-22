@@ -3,7 +3,7 @@
     
     <div class="stoosh-nav-header">
       <div class="d-flex align-items-center justify-content-center">
-        <img src="wallet-icon.svg" alt="Wallet" class="stoosh-nav-logo-icon" />
+        <i class="bi bi-wallet2 text-burnt-orange me-1" style="font-size: 1.5rem;"></i>
         <h1 class="stoosh-nav-brand mb-0 ms-2">STOO$H</h1>
       </div>
     </div>
@@ -12,7 +12,7 @@
       @for (item of navItems; track item.label) {
         <li class="nav-item">
           <a class="stoosh-nav-link" [class.active]="item.active" href="#">
-            <i class="bi {{ item.icon }} stoosh-nav-icon"></i>
+            <i class="{{ item.icon }} stoosh-nav-icon"></i>
             <span class="nav-text">{{ item.label }}</span>
           </a>
         </li>

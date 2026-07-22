@@ -17,7 +17,7 @@ export class Sidebar {
   @Input() collapsed: boolean = false;
   @Input() navItems: NavItem[] = [
     { label: 'Dashboard', icon: 'bi-house-door', active: true },
-    { label: 'Transactions', icon: 'bi-arrow-up-arrow-down' },
+    { label: 'Transactions', icon: 'bi-view-list' },
     { label: 'Analytics', icon: 'bi-bar-chart-line' },
     { label: 'Settings', icon: 'bi-gear' },
   ];
