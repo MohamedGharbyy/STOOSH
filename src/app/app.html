@@ -1,5 +1,10 @@
 <div class="min-vh-100 d-flex flex-column" style="background-color: var(--stoosh-bg-primary);">
   
+  <!-- Persistent video background – lives outside @if so it never unmounts -->
+  <video class="login-video-bg" [class.login-video-bg--hidden]="!showVideoBg()" autoplay muted loop playsinline preload="auto" disablePictureInPicture>
+    <source src="bg-waves.mp4" type="video/mp4">
+  </video>
+  
   @if (isLoading()) {
     <div class="d-flex flex-column align-items-center justify-content-center min-vh-100">
       
@@ -24,9 +29,6 @@
       </app-dashboard>
     } @else {
       <div class="login-page">
-        <video class="login-video-bg" autoplay muted loop playsinline>
-          <source src="bg-waves.mp4" type="video/mp4">
-        </video>
         <div class="login-overlay"></div>
         <div class="login-content">
           <app-auth (loginSuccess)="onLoginSuccess()"></app-auth>
@@ -34,4 +36,4 @@
       </div>
     }
   }
-  
+</div>

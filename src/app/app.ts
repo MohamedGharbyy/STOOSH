@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, computed } from '@angular/core';
 import { Auth } from './components/auth/auth';
 import { Dashboard } from './components/dashboard/dashboard';
 import { Transaction } from './transaction.model';
@@ -28,6 +28,9 @@ export class App {
 
   isLoggedIn = signal(false);
   isLoading = signal(false);
+
+  /** Show video background only when NOT loading AND NOT logged in (i.e., login page is active). */
+  protected showVideoBg = computed(() => !this.isLoading() && !this.isLoggedIn());
 
   onLoginSuccess() {
     this.isLoading.set(true);
