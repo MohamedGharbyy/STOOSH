@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Transaction } from '../../transaction.model';
 import { TransactionRow } from '../transaction-row/transaction-row';
@@ -11,4 +11,5 @@ import { TransactionRow } from '../transaction-row/transaction-row';
 })
 export class TransactionList {
   @Input() items: Transaction[] = [];
+  @Output() editTransaction = new EventEmitter<Transaction>();
 }

@@ -1,0 +1,238 @@
+<div class="stoosh-app-layout">
+  
+  <app-sidebar [collapsed]="sidebarCollapsed" [navItems]="navItems" (toggleSidebar)="onSidebarToggle()" (navItemClick)="onNavItemClickEvent($event)"></app-sidebar>
+  
+  <div class="stoosh-main-wrapper">
+    
+    <app-header [title]="'Transactions'" [actions]="headerActions" (actionClick)="onHeaderAction($event)"></app-header>
+    
+    <main class="stoosh-main-content">
+      <div class="container-fluid px-0">
+        
+        <!-- Filter Section -->
+        <div class="stoosh-card p-4 mb-4">
+          <div class="d-flex flex-wrap align-items-center gap-3">
+            <div class="d-flex gap-2 flex-wrap">
+              <button 
+                class="stoosh-btn stoosh-btn-secondary" 
+                [class.active]="selectedFilter() === 'all'"
+                (click)="onFilterChange('all')">
+                All
+              </button>
+              <button 
+                class="stoosh-btn stoosh-btn-secondary" 
+                [class.active]="selectedFilter() === 'today'"
+                (click)="onFilterChange('today')">
+                Today
+              </button>
+              <button 
+                class="stoosh-btn stoosh-btn-secondary" 
+                [class.active]="selectedFilter() === 'lastWeek'"
+                (click)="onFilterChange('lastWeek')">
+                Last Week
+              </button>
+            </div>
+            
+            <div class="d-flex gap-2 align-items-center ms-auto">
+              <select 
+                class="stoosh-input" 
+                style="width: auto; min-width: 150px;"
+                [value]="selectedMonth()"
+                (change)="onMonthChange($any($event.target).value)">
+                @for (month of months; track month; let i = $index) {
+                  <option [value]="i">{{ month }}</option>
+                }
+              </select>
+              
+              <select 
+                class="stoosh-input" 
+                style="width: auto; min-width: 100px;"
+                [value]="selectedYear()"
+                (change)="onYearChange($any($event.target).value)">
+                @for (year of years; track year) {
+                  <option [value]="year">{{ year }}</option>
+                }
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Transactions List -->
+        <div class="stoosh-card p-4">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h3 class="stoosh-card-title mb-0">All Transactions</h3>
+            <span class="text-secondary small">{{ filteredTransactions().length }} transactions</span>
+          </div>
+          
+          <app-transaction-list [items]="filteredTransactions()" (editTransaction)="openEditModal($event)"></app-transaction-list>
+          
+          @if (filteredTransactions().length === 0) {
+            <div class="text-center py-5">
+              <i class="bi bi-inbox text-secondary" style="font-size: 3rem; opacity: 0.3;"></i>
+              <p class="text-secondary mt-3 mb-0">No transactions found</p>
+            </div>
+          }
+        </div>
+        
+      </div>
+    </main>
+    
+  </div>
+
+  <!-- Add Transaction Modal -->
+  @if (showAddModal) {
+    <div class="modal-backdrop" (click)="closeAddModal()">
+      <div class="modal-content stoosh-card" (click)="$event.stopPropagation()">
+        <div class="modal-header">
+          <h3 class="stoosh-card-title mb-0">Add New Transaction</h3>
+          <button class="stoosh-btn stoosh-btn-ghost" (click)="closeAddModal()">
+            <i class="bi bi-x-lg"></i>
+          </button>
+        </div>
+        
+        <div class="modal-body">
+          <form (ngSubmit)="saveTransaction()">
+            <div class="mb-3">
+              <label class="form-label text-secondary small mb-2">Transaction Name</label>
+              <input 
+                type="text" 
+                class="stoosh-input" 
+                placeholder="e.g., Grocery Shopping"
+                [(ngModel)]="newTransaction.name"
+                required>
+            </div>
+            
+            <div class="mb-3">
+              <label class="form-label text-secondary small mb-2">Amount</label>
+              <input 
+                type="number" 
+                class="stoosh-input" 
+                placeholder="0.00"
+                step="0.01"
+                min="0"
+                [(ngModel)]="newTransaction.amount"
+                required>
+            </div>
+            
+            <div class="mb-3">
+              <label class="form-label text-secondary small mb-2">Type</label>
+              <div class="d-flex gap-2">
+                <button 
+                  type="button"
+                  class="stoosh-btn flex-fill"
+                  [class.stoosh-btn-primary]="newTransaction.type === 'expense'"
+                  [class.stoosh-btn-secondary]="newTransaction.type !== 'expense'"
+                  (click)="newTransaction.type = 'expense'">
+                  <i class="bi bi-arrow-down-circle"></i> Expense
+                </button>
+                <button 
+                  type="button"
+                  class="stoosh-btn flex-fill"
+                  [class.stoosh-btn-primary]="newTransaction.type === 'income'"
+                  [class.stoosh-btn-secondary]="newTransaction.type !== 'income'"
+                  (click)="newTransaction.type = 'income'">
+                  <i class="bi bi-arrow-up-circle"></i> Income
+                </button>
+              </div>
+            </div>
+            
+            <div class="mb-4">
+              <label class="form-label text-secondary small mb-2">Date</label>
+              <input 
+                type="date" 
+                class="stoosh-input"
+                [(ngModel)]="newTransaction.date"
+                required>
+            </div>
+            
+            <div class="d-flex gap-2 justify-content-end">
+              <button type="button" class="stoosh-btn stoosh-btn-secondary" (click)="closeAddModal()">Cancel</button>
+              <button type="submit" class="stoosh-btn stoosh-btn-primary">Save Transaction</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  }
+
+  <!-- Edit Transaction Modal -->
+  @if (showEditModal && editingTransaction) {
+    <div class="modal-backdrop" (click)="closeEditModal()">
+      <div class="modal-content stoosh-card" (click)="$event.stopPropagation()">
+        <div class="modal-header">
+          <h3 class="stoosh-card-title mb-0">Edit Transaction</h3>
+          <button class="stoosh-btn stoosh-btn-ghost" (click)="closeEditModal()">
+            <i class="bi bi-x-lg"></i>
+          </button>
+        </div>
+        
+        <div class="modal-body">
+          <form (ngSubmit)="saveTransaction()">
+            <div class="mb-3">
+              <label class="form-label text-secondary small mb-2">Transaction Name</label>
+              <input 
+                type="text" 
+                class="stoosh-input" 
+                placeholder="e.g., Grocery Shopping"
+                [(ngModel)]="newTransaction.name"
+                required>
+            </div>
+            
+            <div class="mb-3">
+              <label class="form-label text-secondary small mb-2">Amount</label>
+              <input 
+                type="number" 
+                class="stoosh-input" 
+                placeholder="0.00"
+                step="0.01"
+                min="0"
+                [(ngModel)]="newTransaction.amount"
+                required>
+            </div>
+            
+            <div class="mb-3">
+              <label class="form-label text-secondary small mb-2">Type</label>
+              <div class="d-flex gap-2">
+                <button 
+                  type="button"
+                  class="stoosh-btn flex-fill"
+                  [class.stoosh-btn-primary]="newTransaction.type === 'expense'"
+                  [class.stoosh-btn-secondary]="newTransaction.type !== 'expense'"
+                  (click)="newTransaction.type = 'expense'">
+                  <i class="bi bi-arrow-down-circle"></i> Expense
+                </button>
+                <button 
+                  type="button"
+                  class="stoosh-btn flex-fill"
+                  [class.stoosh-btn-primary]="newTransaction.type === 'income'"
+                  [class.stoosh-btn-secondary]="newTransaction.type !== 'income'"
+                  (click)="newTransaction.type = 'income'">
+                  <i class="bi bi-arrow-up-circle"></i> Income
+                </button>
+              </div>
+            </div>
+            
+            <div class="mb-4">
+              <label class="form-label text-secondary small mb-2">Date</label>
+              <input 
+                type="date" 
+                class="stoosh-input"
+                [(ngModel)]="newTransaction.date"
+                required>
+            </div>
+            
+            <div class="d-flex gap-2 justify-content-between">
+              <button type="button" class="stoosh-btn" style="background-color: rgba(191, 67, 66, 0.1); color: var(--stoosh-danger); border-color: rgba(191, 67, 66, 0.2);" (click)="deleteTransaction(editingTransaction.id); closeEditModal();">
+                <i class="bi bi-trash"></i> Delete
+              </button>
+              <div class="d-flex gap-2">
+                <button type="button" class="stoosh-btn stoosh-btn-secondary" (click)="closeEditModal()">Cancel</button>
+                <button type="submit" class="stoosh-btn stoosh-btn-primary">Update Transaction</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  }
+</div>

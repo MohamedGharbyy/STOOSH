@@ -1,6 +1,6 @@
 <div class="stoosh-app-layout">
   
-  <app-sidebar [collapsed]="sidebarCollapsed" (toggleSidebar)="onSidebarToggle()"></app-sidebar>
+  <app-sidebar [collapsed]="sidebarCollapsed" [navItems]="navItems" (toggleSidebar)="onSidebarToggle()" (navItemClick)="onNavItemClick($event)"></app-sidebar>
   
   <div class="stoosh-main-wrapper">
     

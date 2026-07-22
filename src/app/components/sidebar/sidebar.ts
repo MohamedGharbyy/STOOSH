@@ -23,8 +23,13 @@ export class Sidebar {
   ];
 
   @Output() toggleSidebar = new EventEmitter<void>();
+  @Output() navItemClick = new EventEmitter<NavItem>();
 
   onToggleSidebar(): void {
     this.toggleSidebar.emit();
+  }
+
+  onNavItemClick(item: NavItem): void {
+    this.navItemClick.emit(item);
   }
 }

@@ -11,7 +11,7 @@
     <ul class="navbar-nav flex-column w-100">
       @for (item of navItems; track item.label) {
         <li class="nav-item">
-          <a class="stoosh-nav-link" [class.active]="item.active" href="#">
+          <a class="stoosh-nav-link" [class.active]="item.active" href="#" (click)="onNavItemClick(item); $event.preventDefault()">
             <i class="{{ item.icon }} stoosh-nav-icon"></i>
             <span class="nav-text">{{ item.label }}</span>
           </a>

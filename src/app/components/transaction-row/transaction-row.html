@@ -1,4 +1,4 @@
-<div class="stoosh-transaction-row">
+<div class="stoosh-transaction-row" (click)="onRowClick()">
   <div class="d-flex align-items-center gap-3">
     <div class="stoosh-transaction-icon" [class.income]="item.type === 'income'" [class.expense]="item.type === 'expense'">
       @if (item.type === 'income') {

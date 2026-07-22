@@ -21,12 +21,7 @@
     </div>
   } @else {
     @if (isLoggedIn()) {
-      <app-dashboard 
-        [title]="title()" 
-        [transactions]="transactions"
-        (sidebarToggle)="onSidebarToggle()"
-        (headerAction)="onHeaderAction($event)">
-      </app-dashboard>
+      <router-outlet></router-outlet>
     } @else {
       <div class="login-page">
         <div class="login-overlay"></div>

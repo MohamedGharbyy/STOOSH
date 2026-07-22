@@ -1,11 +1,13 @@
 import { Component, signal, computed } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 import { Auth } from './components/auth/auth';
 import { Dashboard } from './components/dashboard/dashboard';
+import { Transactions } from './components/transactions/transactions';
 import { Transaction } from './transaction.model';
 
 @Component({
   selector: 'app-root',
-  imports: [Auth, Dashboard],
+  imports: [RouterOutlet, Auth, Dashboard, Transactions],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
@@ -24,6 +26,27 @@ export class App {
     amount: 80,
     type: 'expense',
     date: new Date('2026-07-17')
+  },
+  {
+    id: 3,
+    name: 'Grocery Shopping',
+    amount: 150,
+    type: 'expense',
+    date: new Date('2026-07-20')
+  },
+  {
+    id: 4,
+    name: 'Freelance Payment',
+    amount: 1200,
+    type: 'income',
+    date: new Date('2026-07-18')
+  },
+  {
+    id: 5,
+    name: 'Netflix Subscription',
+    amount: 15,
+    type: 'expense',
+    date: new Date('2026-07-15')
   }];
 
   isLoggedIn = signal(false);
