@@ -3,8 +3,8 @@
     
     <div class="stoosh-nav-header">
       <div class="d-flex align-items-center justify-content-center">
-        <i class="bi bi-wallet2 text-burnt-orange me-1" style="font-size: 1.5rem;"></i>
-        <h1 class="stoosh-nav-brand mb-0 ms-2">STOO$H</h1>
+        <i class="bi bi-wallet2 stoosh-nav-brand-icon me-2"></i>
+        <h1 class="stoosh-nav-brand mb-0">STOO$H</h1>
       </div>
     </div>
     
@@ -21,7 +21,7 @@
     
     <div class="mt-auto pt-3 border-top border-subtle">
       <button class="stoosh-btn stoosh-btn-ghost w-100" (click)="onToggleSidebar()">
-        <i class="bi" [class.bi-chevron-left]="!collapsed" [class.bi-chevron-right]="collapsed"></i>
+        <i class="bi stoosh-nav-icon" [class.bi-chevron-left]="!collapsed" [class.bi-chevron-right]="collapsed"></i>
         <span class="nav-text">Collapse</span>
       </button>
     </div>

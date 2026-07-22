@@ -1,15 +1,25 @@
-<div class="stoosh-card p-3">
-  <p class="text-secondary small mb-1">{{ label }}</p>
-  <p class="stoosh-figure mb-0" 
-     [ngClass]="{
-       'stoosh-figure-large': size === 'large',
-       'stoosh-figure-medium': size === 'medium',
-       'stoosh-figure-small': size === 'small',
-       'text-white': variant === 'default',
-       'text-success': variant === 'success',
-       'text-danger': variant === 'danger',
-       'text-warning': variant === 'warning'
-     }">
-    {{ value }}
-  </p>
+<div class="stoosh-stat-card" [ngClass]="{
+  'stoosh-stat-card--default': variant === 'default',
+  'stoosh-stat-card--success': variant === 'success',
+  'stoosh-stat-card--danger': variant === 'danger',
+  'stoosh-stat-card--warning': variant === 'warning'
+}">
+  <div class="d-flex align-items-center gap-3 mb-2">
+    <div class="stoosh-stat-card-icon" [ngClass]="{
+      'stoosh-stat-card-icon--default': variant === 'default',
+      'stoosh-stat-card-icon--success': variant === 'success',
+      'stoosh-stat-card-icon--danger': variant === 'danger',
+      'stoosh-stat-card-icon--warning': variant === 'warning'
+    }">
+      <i class="bi" [ngClass]="{
+        'bi-wallet2': variant === 'default' && size === 'large',
+        'bi-cash-stack': variant === 'default' && size !== 'large',
+        'bi-arrow-up-circle': variant === 'success',
+        'bi-arrow-down-circle': variant === 'danger',
+        'bi-graph-up-arrow': variant === 'warning'
+      }"></i>
+    </div>
+    <p class="stoosh-stat-card-label mb-0">{{ label }}</p>
+  </div>
+  <p class="stoosh-stat-card-value mb-0">{{ value }}</p>
 </div>

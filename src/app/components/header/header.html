@@ -5,7 +5,7 @@
   
   <div class="stoosh-header-actions">
     @for (action of actions; track action.action) {
-      <button class="stoosh-btn stoosh-btn-{{ action.variant }} action-btn" (click)="onActionClick(action.action)">
+      <button class="stoosh-btn stoosh-btn-{{ action.variant }}" (click)="onActionClick(action.action)">
         <i class="bi {{ action.icon }}"></i>
         {{ action.label }}
       </button>
