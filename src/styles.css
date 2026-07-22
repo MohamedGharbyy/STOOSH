@@ -95,7 +95,32 @@ html, body {
   max-height: 100vh;
   width: 100%;
   background-color: var(--stoosh-bg-primary);
+  background-image: url('/STOO$H_bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   overflow: hidden;
+  position: relative;
+}
+
+/* Semi-transparent overlay to ensure content readability */
+.stoosh-app-layout::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(18, 18, 18, 0.75);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Ensure child elements appear above the overlay */
+.stoosh-app-layout > * {
+  position: relative;
+  z-index: 1;
 }
 
 .stoosh-main-wrapper {
@@ -423,13 +448,15 @@ html, body {
 
 /* --- Stat Cards (Dashboard Overview) --- */
 .stoosh-stat-card {
-  background-color: var(--stoosh-surface-card);
+  background-color: rgba(26, 26, 26, 0.95);
   border: 1px solid var(--stoosh-border-subtle);
   border-radius: var(--stoosh-radius-lg);
   padding: 20px 22px;
   transition: all 0.3s var(--stoosh-ease-snappy);
   position: relative;
   overflow: hidden;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .stoosh-stat-card::before {
@@ -523,10 +550,12 @@ html, body {
 
 /* --- Cards & Transactions --- */
 .stoosh-card {
-  background-color: var(--stoosh-surface-card);
+  background-color: rgba(26, 26, 26, 0.95);
   border: 1px solid var(--stoosh-border-subtle);
   border-radius: var(--stoosh-radius-lg);
   transition: border-color 0.3s var(--stoosh-ease-snappy);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .stoosh-card:hover {
@@ -544,11 +573,13 @@ html, body {
   align-items: center;
   justify-content: space-between;
   padding: 14px 18px;
-  background-color: var(--stoosh-bg-tertiary);
+  background-color: rgba(30, 30, 30, 0.95);
   border: 1px solid var(--stoosh-border-subtle);
   border-radius: var(--stoosh-radius-md);
   transition: all 0.25s var(--stoosh-ease-snappy);
   margin-bottom: 6px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .stoosh-transaction-row:hover {
