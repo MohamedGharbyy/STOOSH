@@ -554,7 +554,7 @@ html, body {
 .stoosh-transaction-row:hover {
   background-color: var(--stoosh-surface-overlay);
   border-color: var(--stoosh-border-default);
-  transform: translateX(3px);
+  transform: translateY(-1px);
 }
 
 .stoosh-transaction-icon {
